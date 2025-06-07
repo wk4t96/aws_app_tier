@@ -6,6 +6,8 @@ import subprocess
 import time
 
 REGION = "ap-northeast-2"
+AWS_ACCESS_KEY_ID=AKIA42VG6QWKJEVY5C64
+AWS_SECRET_ACCESS_KEY=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
 
 sqs = boto3.client("sqs", region_name=REGION)
 s3 = boto3.client("s3", region_name=REGION)
