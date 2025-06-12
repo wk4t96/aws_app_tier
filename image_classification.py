@@ -10,6 +10,7 @@ import numpy as np
 import json
 import sys
 import time
+import os
 
 url = str(sys.argv[1])
 #img = Image.open(urlopen(url))
@@ -22,7 +23,11 @@ img_tensor = transforms.ToTensor()(img).unsqueeze_(0)
 outputs = model(img_tensor)
 _, predicted = torch.max(outputs.data, 1)
 
-with open('./imagenet-labels.json') as f:
+script_dir = os.path.dirname(os.path.realpath(__file__))
+labels_path = os.path.join(script_dir, 'imagenet-labels.json')
+
+with open(labels_path) as f:
+    labels = json.load(f)
     labels = json.load(f)
 result = labels[np.array(predicted)[0]]
 img_name = url.split("/")[-1]
