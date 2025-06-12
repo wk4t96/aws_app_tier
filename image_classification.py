@@ -28,7 +28,6 @@ labels_path = os.path.join(script_dir, 'imagenet-labels.json')
 
 with open(labels_path) as f:
     labels = json.load(f)
-    labels = json.load(f)
 result = labels[np.array(predicted)[0]]
 img_name = url.split("/")[-1]
 #save_name = f"({img_name}, {result})"
